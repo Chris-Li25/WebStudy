@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        /* p[title] {
+            color: orange;
+        }
+         */
+        
+        p[title=abc] {
+            color: red;
+        }
+        
+        p[title^=abc] {
+            color: blue;
+        }
+        
+        p[title$=abc] {
+            color: green;
+        }
+        /* p[title*=abc] {
+            color: red;
+        } */
+    </style>
+</head>
+
+<body>
+    <p title="hello" class="p4">锄禾日当午</p>
+    <p title="abc" class="p4">汗滴禾下土</p>
+    <p>谁知盘中餐</p>
+    <p id="red ">粒粒皆辛苦</p>
+    <div class=" blue ">我是div</div>
+    <p title="aasdabc " class="blue ">我是p元素</p>
+
+    <span>我是span</span>
+</body>
+
+</html>
