@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+        .img-list {
+            width: 590px;
+            height: 470px;
+            margin: 100px auto;
+            position: relative;
+        }
+        
+        .img-list li {
+            position: absolute;
+        }
+        
+        .img-list li:nth-child(4) {
+            z-index: 1;
+        }
+        
+        .pointer {
+            position: absolute;
+            z-index: 999;
+            bottom: 15px;
+            left: 15px;
+        }
+        
+        .pointer a {
+            float: left;
+            width: 10px;
+            height: 10px;
+            margin-left: 5px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, .3);
+            background-clip: content-box;
+            /* 将背景颜色设置到内容区，边框和内边距不再有背景颜色 */
+            border: 2px solid transparent;
+        }
+        
+        .pointer a.active,
+        .pointer a:hover {
+            background-color: #fff;
+            border: 2px solid rgba(255, 255, 255, .3);
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="img-list">
+        <li>
+            <a href="javascript:;"><img src="./img/05/1.jpg" alt=""></a>
+        </li>
+        <li>
+            <a href="javascript:;"><img src="./img/05/2.jpg" alt=""></a>
+        </li>
+        <li>
+            <a href="javascript:;"><img src="./img/05/3.jpg" alt=""></a>
+        </li>
+        <li>
+            <a href="javascript:;"><img src="./img/05/4.jpg" alt=""></a>
+        </li>
+        <li>
+            <a href="javascript:;"><img src="./img/05/5.jpg" alt=""></a>
+        </li>
+        <li>
+            <a href="javascript:;"><img src="./img/05/6.jpg" alt=""></a>
+        </li>
+        <li>
+            <a href="javascript:;"><img src="./img/05/7.jpg" alt=""></a>
+        </li>
+        <li>
+            <a href="javascript:;"><img src="./img/05/8.jpg" alt=""></a>
+        </li>
+
+        <div class="pointer">
+            <a class="active" href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+        </div>
+    </ul>
+</body>
+
+</html>
