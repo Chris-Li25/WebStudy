@@ -1,0 +1,19 @@
+body {
+  background-color: #bfa;
+}
+.box1 {
+  background-color: #bfa;
+}
+.box1 .box2 {
+  background-color: #ff0;
+}
+.box1 .box2 .box4 {
+  color: red;
+}
+.box1 .box3 {
+  background-color: orange;
+}
+.box5 {
+  width: 200px;
+  color: #bfa;
+}

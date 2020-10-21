@@ -1,0 +1,141 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.w,
+.top-bar,
+.banner,
+.menu,
+.course-list .title {
+  width: 17.325rem;
+  margin: 0 auto;
+}
+html {
+  font-size: 5.33333333vw;
+  background-color: #eff0f4;
+}
+a {
+  text-decoration: none;
+}
+.top-bar {
+  display: flex;
+  height: 4rem;
+  justify-content: space-between;
+  align-items: center;
+}
+.top-bar a {
+  color: #24253d;
+  font-size: 1.25rem;
+  line-height: 4rem;
+}
+.top-bar a i {
+  color: #999;
+  font-size: 1rem;
+}
+.banner img {
+  width: 100%;
+}
+.menu {
+  height: 8.225rem;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-content: space-evenly;
+}
+.menu a {
+  width: 8.2rem;
+  height: 2.6rem;
+  line-height: 2.6rem;
+  color: white;
+  font-size: 0.75rem;
+  border-radius: 0.25rem;
+  display: flex;
+}
+.menu a i {
+  flex-grow: 1;
+  line-height: 2.6rem;
+  margin-left: 0.95rem;
+}
+.menu a p {
+  flex-grow: 2;
+}
+.menu .course {
+  background-color: #f97053;
+}
+.menu .star {
+  background-color: #cd6efe;
+}
+.menu .sub {
+  background-color: #fe4479;
+}
+.menu .download {
+  background-color: #1bc4fb;
+}
+.course-list {
+  height: 9.9rem;
+  margin-bottom: 1.15rem;
+}
+.course-list .title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.course-list h2 {
+  font-size: 0.825rem;
+  line-height: 0.825rem;
+  color: #24253d;
+  border-left: 0.1rem solid #3a84ff;
+  padding-left: 0.25rem;
+}
+.course-list a {
+  font-size: 0.7rem;
+  color: #656565;
+}
+.item-list {
+  padding-left: 0.75rem;
+  width: 18rem;
+  display: flex;
+  height: 9.1rem;
+  align-items: center;
+  overflow: auto;
+}
+.item-list .item {
+  flex: none;
+  box-sizing: border-box;
+  width: 8rem;
+  height: 8.1rem;
+  padding: 0 0.55rem;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-evenly;
+  margin-right: 0.6rem;
+}
+.item-list .item img {
+  width: 100%;
+  vertical-align: top;
+}
+.item-list .item .course-title {
+  font-size: 0.7rem;
+  font-style: none;
+  color: #24253d;
+}
+.item-list .item .user-info {
+  display: flex;
+  align-items: center;
+}
+.item-list .item .avatar {
+  width: 1.05rem;
+  height: 1.05rem;
+}
+.item-list .item .avatar img {
+  width: 100%;
+}
+.item-list .item .nickname {
+  font-size: 0.6rem;
+  color: #969393;
+  margin-left: 0.4rem;
+}
+/*# sourceMappingURL=./style.css.map */
