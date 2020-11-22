@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swiper</title>
+    <link rel="stylesheet" href="./css/iconfont.css">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        #swiper {
+            width: 520px;
+            height: 333px;
+            margin: 50px auto;
+            position: relative;
+            padding: 10px 0;
+            background-color: orange;
+            overflow: hidden;
+        }
+        
+        #swiper #img-list {
+            list-style: none;
+            position: absolute;
+            left: 0px;
+        }
+        
+        #swiper #img-list li {
+            float: left;
+            margin: 0 10px;
+        }
+        
+        #swiper #img-list li img {
+            vertical-align: bottom;
+        }
+        
+        #navDiv {
+            position: absolute;
+            bottom: 15px;
+        }
+        
+        #navDiv a {
+            float: left;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: red;
+            margin: 0 3px;
+            opacity: 0.5;
+            filter: alpha(opacity=50);
+        }
+        
+        #navDiv a:hover {
+            background-color: black;
+        }
+        
+        .Btn {
+            font-size: 50px;
+            color: orange;
+            text-decoration: none;
+            opacity: 0.5;
+        }
+        
+        .Btn:hover {
+            opacity: 1;
+        }
+        
+        #leftBtn {
+            position: absolute;
+            left: 15px;
+        }
+        
+        #rightBtn {
+            position: absolute;
+            right: 15px;
+        }
+    </style>
+    <script src="./js/jquery-1.10.1.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            var $swiper = $('#swiper');
+            var $imglist = $('#img-list');
+            var $imgArr = $('#img-list li img');
+            var $navDiv = $('#navDiv');
+            var $navArr = $('#navDiv a');
+            var $leftBtn = $('#leftBtn');
+            var $rightBtn = $('#rightBtn');
+
+            var animateTime = 500
+            var swiperTime = 2000
+
+            var SwiperWidth = $swiper.width();
+            var SwiperHeight = $swiper.height();
+
+            var index = 1;
+            $navArr[index - 1].style.backgroundColor = 'black';
+            $imglist.css('left', -SwiperWidth * index);
+
+            var timer;
+
+            $imglist.width($imgArr.length * SwiperWidth)
+            $navDiv.css('left', (SwiperWidth - $navDiv.width()) / 2)
+            $leftBtn.css('top', (SwiperHeight - $leftBtn.height()) / 2);
+            $rightBtn.css('top', (SwiperHeight - $rightBtn.height()) / 2);
+
+
+            autoSwiper();
+
+            $navArr.each(function() {
+                this.num = $navArr.index(this) + 1;
+            })
+
+            $swiper.mouseenter(function() {
+                clearInterval(timer);
+            })
+
+            $navArr.mouseenter(function() {
+                clearInterval(timer);
+                index = this.num;
+                setPoint();
+                btnEvent();
+            })
+
+            $swiper.mouseleave(function() {
+                autoSwiper();
+            })
+
+            $leftBtn.click(function() {
+                if (index > 0) {
+                    index--;
+                    btnEvent();
+                }
+
+            })
+
+            $rightBtn.click(function() {
+                if (index < $imgArr.length - 1) {
+                    index++;
+                    btnEvent();
+                }
+            })
+
+
+
+
+            function autoSwiper() {
+                timer = setInterval(function() {
+                    index++;
+                    $imglist.animate({
+                            left: -SwiperWidth * index
+                        },
+                        animateTime, setPoint);
+                }, swiperTime);
+            }
+
+            function setPoint() {
+                if (index >= $imgArr.length - 1) {
+                    index = 1;
+                    $imglist.css('left', -SwiperWidth * index);
+                    $navArr[index - 1].style.backgroundColor = 'black';
+                } else if (index < 1) {
+                    index = 5
+                    $imglist.css('left', -SwiperWidth * index);
+                    $navArr[index - 1].style.backgroundColor = 'black';
+                }
+                $navArr.css('backgroundColor', '')
+                $navArr[index - 1].style.backgroundColor = 'black';
+            }
+
+            function btnEvent() {
+                $imglist.stop(false, true);
+                $imglist.animate({
+                        left: -SwiperWidth * index
+                    },
+                    animateTime, setPoint);
+                // setPoint();
+            }
+        })
+    </script>
+</head>
+
+<body>
+    <div id="swiper">
+        <ul id="img-list">
+            <li><img src="./img/5.jpg" alt=""></li>
+            <li><img src="./img/1.jpg" alt=""></li>
+            <li><img src="./img/2.jpg" alt=""></li>
+            <li><img src="./img/3.jpg" alt=""></li>
+            <li><img src="./img/4.jpg" alt=""></li>
+            <li><img src="./img/5.jpg" alt=""></li>
+            <li><img src="./img/1.jpg" alt=""></li>
+        </ul>
+        <div id="navDiv">
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+        </div>
+        <div id="leftBtn">
+            <a class="Btn iconfont icon-zuo" href="javascript:;"></a>
+        </div>
+        <div id="rightBtn">
+            <a class="Btn iconfont icon-you" href="javascript:;"></a>
+        </div>
+    </div>
+</body>
+
+</html>
+
+</html>

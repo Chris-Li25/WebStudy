@@ -7,45 +7,37 @@
     <title>Document</title>
     <style>
         #to_top {
-            width: 30px;
-            height: 40px;
-            font: 14px/20px arial;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font: 20px/50px arial;
             text-align: center;
+            user-select: none;
             background: #06c;
-            position: fixed;
             cursor: pointer;
             color: #fff;
-            left: 1050px;
-            top: 500px;
+            right: 100px;
+            bottom: 100px;
+            position: fixed;
+            text-decoration: none;
         }
     </style>
 </head>
 
 <body style="height: 2000px;">
 
-    <div id="to_top">返回顶部</div>
+    <a href="javascript:;" id="to_top">Top</a>
 
-    <script type="text/javascript" src="jquery-1.10.1.js"></script>
+    <script type="text/javascript" src="./js/jquery-1.10.1.js"></script>
     <script type="text/javascript">
         $('#to_top').click(function() {
-            // 瞬间滚到顶部
-            //$('html,body').scrollTop(0)
-
-            // $("html,body").animate({
-            //     scrollTop: 0
-            // }, 300);
-            // 通过animate过渡滚到顶部
-
-
-
-            // 通过定时器过渡滚到顶部
 
             var $page = $('html,body')
             var distance = $('html').scrollTop() + $('body').scrollTop()
                 // 总时间
-            var time = 500
+            var time = 400
                 // 间隔时间
-            var intervalTime = 50
+            var intervalTime = 5
             var itemDistance = distance / (time / intervalTime)
                 // 使用循环定时器不断滚动
             var intervalId = setInterval(function() {
