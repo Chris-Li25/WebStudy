@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type=""></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        html,
+        body {
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        body {
+            background-color: whitesmoke;
+        }
+        
+        #test {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate3d(-50%, -50%, 0);
+            background-color: skyblue;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function() {
+            var canvas = document.querySelector("#test");
+            if (canvas.getContext) {
+                var ctx = canvas.getContext("2d");
+
+                var img = new Image();
+                img.src = 'img/1.png';
+                img.onload = function() {
+                    canvas.width = img.width * 4
+                    canvas.height = img.height * 2
+
+                    draw();
+                }
+
+                function draw() {
+                    ctx.drawImage(img, 0, 0, img.width * 2, img.height * 2)
+
+                    //旧图像数据
+                    var oldImgdata = ctx.getImageData(0, 0, img.width * 2, img.height * 2);
+
+                    //新创建图像数据
+                    var newImgdata = ctx.createImageData(img.width * 2, img.height * 2);
+
+                    //设置矩形边长
+                    var size = 10;
+
+                    //从图像每5*5的矩形中取其中一个作为矩形的全部颜色 达到马赛克效果
+                    for (var i = 0; i < oldImgdata.width / size; i++) {
+                        for (var j = 0; j < oldImgdata.height / size; j++) {
+
+                            var color = getPxInfo(oldImgdata, i * size + Math.floor(Math.random() * size), j * size + Math.floor(Math.random() * size))
+
+
+                            for (var a = 0; a < size + 4; a++) {
+                                for (var b = 0; b < size; b++) {
+                                    setPxInfo(newImgdata, a + i * size, b + j * size, color)
+                                }
+
+                            }
+                        }
+
+
+                    }
+
+                    ctx.putImageData(newImgdata, img.width * 2, 0)
+
+
+                }
+
+
+                //获取单个像素点的信息
+                function getPxInfo(imgdata, x, y) {
+                    var color = [];
+
+                    var data = imgdata.data;
+                    var w = imgdata.width;
+                    var h = imgdata.height;
+
+                    color[0] = data[(y * w + x) * 4];
+                    color[1] = data[(y * w + x) * 4 + 1];
+                    color[2] = data[(y * w + x) * 4 + 2];
+                    color[3] = data[(y * w + x) * 4 + 3];
+
+                    return color;
+                }
+
+                //修改单个像素点的信息
+                function setPxInfo(imgdata, x, y, color) {
+
+                    var data = imgdata.data;
+                    var w = imgdata.width;
+                    var h = imgdata.height;
+
+                    data[(y * w + x) * 4] = color[0];
+                    data[(y * w + x) * 4 + 1] = color[1];
+                    data[(y * w + x) * 4 + 2] = color[2];
+                    data[(y * w + x) * 4 + 3] = color[3];
+
+                }
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    <canvas id="test" width="500" height="500">
+			<span>您的浏览器不支持画布元素</span>
+    </canvas>
+
+</body>
+
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type=""></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        html,
+        body {
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        body {
+            background-color: whitesmoke;
+        }
+        
+        #test {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate3d(-50%, -50%, 0);
+            background-color: skyblue;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function() {
+            var canvas = document.querySelector("#test");
+            if (canvas.getContext) {
+                var ctx = canvas.getContext("2d");
+
+                ctx.fillStyle = "rgba(90, 140, 255,10)";
+                ctx.fillRect(0, 0, 200, 200);
+
+                //获取imageData并修改
+                var imageData = ctx.getImageData(0, 0, 200, 200);
+
+                console.log(imageData)
+
+                for (var i = 0; i < imageData.data.length / 4; i++) {
+                    imageData.data[4 * i + 2] = 10;
+                }
+                ctx.putImageData(imageData, 0, 0)
+
+                //新建imageData
+                var imageData1 = ctx.createImageData(200, 200);
+                for (var i = 0; i < imageData1.data.length; i++) {
+                    imageData1.data[4 * i + 3] = 150;
+                }
+                ctx.putImageData(imageData1, 200, 200)
+
+
+                //获取单个像素点的信息
+                function getPxInfo(imgdata, x, y) {
+                    var color = [];
+
+                    var data = imgdata.data;
+                    var w = imgdata.width;
+                    var h = imgdata.height;
+
+                    color[0] = data[(y * w + x) * 4];
+                    color[1] = data[(y * w + x) * 4 + 1];
+                    color[2] = data[(y * w + x) * 4 + 2];
+                    color[3] = data[(y * w + x) * 4 + 3];
+
+                    return color;
+                }
+
+                //修改单个像素点的信息
+                function setPxInfo(imgdata, x, y, color) {
+
+                    var data = imgdata.data;
+                    var w = imgdata.width;
+                    var h = imgdata.height;
+
+                    data[(y * w + x) * 4] = color[0];
+                    data[(y * w + x) * 4 + 1] = color[1];
+                    data[(y * w + x) * 4 + 2] = color[2];
+                    data[(y * w + x) * 4 + 3] = color[3];
+
+                }
+
+                var imageData2 = ctx.getImageData(0, 0, 200, 200);
+
+                var color = getPxInfo(imageData2, 0, 0)
+                console.log(color)
+
+                var color = [255, 255, 255, 255]
+
+                //画一条黑线
+                for (var i = 0; i < imageData2.width; i++) {
+                    setPxInfo(imageData2, i, 30, [0, 0, 0, 255]);
+                }
+
+                ctx.putImageData(imageData2, 0, 0);
+
+
+
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    <canvas id="test" width="500" height="500">
+			<span>您的浏览器不支持画布元素</span>
+    </canvas>
+
+</body>
+
+</html>

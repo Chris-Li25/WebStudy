@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        html,
+        body {
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        #test {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 200px;
+            height: 200px;
+            background: pink;
+        }
+        
+        #barrier {
+            position: absolute;
+            left: 600px;
+            top: 200px;
+            width: 200px;
+            height: 200px;
+        }
+        
+        img {
+            transition: .5s;
+        }
+    </style>
+    <script src="js/dragTool.js"></script>
+</head>
+
+<body>
+    <div id="test"></div>
+    <img src="img/1.png" id="barrier" />
+</body>
+<script type="text/javascript">
+    window.onload = function() {
+        var testNode = document.querySelector("#test");
+        var imgNode = document.querySelector("img");
+        //拿到鼠标点击元素时，元素一开始的位置
+        dragTool.drag(testNode, true, 100, imgNode);
+    }
+</script>
+
+</html>

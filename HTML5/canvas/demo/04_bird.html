@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type=""></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        html,
+        body {
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        body {
+            background-color: whitesmoke;
+        }
+        
+        #test {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate3d(-50%, -50%, 0);
+            background-color: skyblue;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function() {
+            var canvas = document.querySelector("#test");
+            if (canvas.getContext) {
+                var ctx = canvas.getContext("2d");
+
+                var flag = 0;
+                var value = 0;
+
+                setInterval(function() {
+                    value += 10;
+                    flag++;
+                    ctx.clearRect(0, 0, value, canvas.height)
+                    if (flag > 8) {
+                        flag = 1;
+                    }
+                    if (value > canvas.width) {
+                        value = 0;
+                    }
+                    var img = new Image();
+                    img.src = 'img/bird/q_r' + flag + '.jpg';
+                    img.onload = function() {
+                        draw(this);
+                    }
+                }, 1000 / 20)
+
+
+
+                function draw(img) {
+                    ctx.drawImage(img, value, 0, 210, 125);
+                }
+
+
+
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    <canvas id="test" width="500" height="500">
+			<span>您的浏览器不支持画布元素</span>
+    </canvas>
+
+</body>
+
+</html>

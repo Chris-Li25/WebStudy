@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type=""></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        html,
+        body {
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        body {
+            background-color: whitesmoke;
+        }
+        
+        #test {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate3d(-50%, -50%, 0);
+            background-color: skyblue;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function() {
+            var canvas = document.querySelector("#test");
+            if (canvas.getContext) {
+                var ctx = canvas.getContext("2d");
+
+                ctx.fillStyle = "skyblue"
+                ctx.font = "60px sans-serif"
+                    // ctx.textAlign = "center";
+                    // ctx.textAlign = "left";
+                    // ctx.textAlign = "right";
+                ctx.textBaseline = 'middle';
+
+                //阴影
+                ctx.shadowColor = 'black';
+                ctx.shadowOffsetX = 2;
+                ctx.shadowOffsetY = 2;
+                // ctx.textBaseline = 'top';
+                // ctx.textBaseline = 'bottom';
+
+                //文本居中
+                var textWidth = ctx.measureText('Chris').width;
+                ctx.fillText("Chris", (canvas.width - textWidth) / 2, (canvas.height) / 2);
+                // ctx.strokeText("Chris", 100, 100);
+
+
+
+
+
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    <canvas id="test" width="500" height="500">
+			<span>您的浏览器不支持画布元素</span>
+    </canvas>
+
+</body>
+
+</html>

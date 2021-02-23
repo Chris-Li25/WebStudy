@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type=""></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        html,
+        body {
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        body {
+            background-color: whitesmoke;
+        }
+        
+        #test {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate3d(-50%, -50%, 0);
+            background-color: skyblue;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function() {
+            var canvas = document.querySelector("#test");
+            if (canvas.getContext) {
+                var ctx = canvas.getContext("2d");
+
+                ctx.beginPath();
+                // ctx.moveTo(100, 100);
+                ctx.arc(100, 100, 50, 0, 360 * Math.PI / 180, false);
+                // ctx.closePath();
+                ctx.stroke();
+
+
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    <canvas id="test" width="500" height="500">
+			<span>您的浏览器不支持画布元素</span>
+    </canvas>
+
+</body>
+
+</html>
