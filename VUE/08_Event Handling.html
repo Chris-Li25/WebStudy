@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>07_事件处理</title>
+</head>
+
+<body>
+
+    <div id="example">
+
+        <h2>绑定监听</h2>
+        <button @click="test1">test1</button>
+        <button @click="test2('chris')">test2</button>
+        <button @click="test3('chris', $event)">test3</button>
+
+        <h2>事件修饰符</h2>
+        <a href="http://www.baidu.com" @click.prevent="test4">百度一下</a>
+        <div style="width: 200px;height: 200px;background: gray" @click="test5">
+            <div style="width: 100px;height: 100px;background: skyblue" @click.stop="test6"></div>
+        </div>
+
+        <h2>按键修饰符</h2>
+        <input placeholder="按下回车显示输入内容" type="text" @keyup.13="test7">
+        <br>
+        <input placeholder="按下空格显示输入内容" type="text" @keyup.space="test7">
+
+    </div>
+
+    <script type="text/javascript" src="js/vue.js"></script>
+    <script type="text/javascript">
+        new Vue({
+            el: '#example',
+            data: {
+
+            },
+            methods: {
+                test1(event) {
+                    alert(event.target.innerHTML)
+                },
+                test2(msg) {
+                    alert(msg)
+                },
+                test3(msg, event) {
+                    alert(msg + '---' + event.target.textContent)
+                },
+
+                test4() {
+                    alert('点击了链接')
+                },
+
+                test5() {
+                    alert('out')
+                },
+                test6() {
+                    alert('inner')
+                },
+
+                test7(event) {
+                    alert(event.target.value)
+                    event.target.value = ''
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

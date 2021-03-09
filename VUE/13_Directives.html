@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>指令</title>
+    <style>
+        [v-cloak] {
+            display: none
+        }
+    </style>
+</head>
+
+<body>
+    <div id="example">
+        <p v-cloak>{{content}}</p>
+        <p v-text="content"></p>
+        <!--p.textContent = content-->
+        <p v-html="content"></p>
+        <!--p.innerHTML = content-->
+        <p ref="msg">hello Vue!</p>
+        <button @click="hint">提示</button>
+    </div>
+
+    <div id="test">
+        <p v-upper-text="msg"></p>
+        <p v-lower-text="msg"></p>
+    </div>
+
+    <div id="test2">
+        <p v-upper-text="msg"></p>
+        <p v-lower-text="msg"></p>
+    </div>
+
+    <script type="text/javascript" src="js/vue.js"></script>
+    <script type="text/javascript">
+        alert('-----')
+        new Vue({
+            el: '#example',
+            data: {
+                content: '<a href="http://www.baidu.com">百度一下</a>'
+            },
+            methods: {
+                hint() {
+                    alert(this.$refs.msg.innerHTML)
+                }
+            }
+        })
+
+        Vue.directive('upper-text', function(el, binding) {
+            console.log(el, binding)
+            el.textContent = binding.value.toUpperCase()
+        })
+        new Vue({
+            el: '#test',
+            data: {
+                msg: "I'm Steve"
+            },
+            // 注册局部指令
+            directives: {
+                'lower-text' (el, binding) {
+                    console.log(el, binding)
+                    el.textContent = binding.value.toLowerCase()
+                }
+            }
+
+        })
+
+        new Vue({
+            el: '#test2',
+            data: {
+                msg: "I'm Chris"
+            }
+        })
+    </script>
+</body>
+
+</html>

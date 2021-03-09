@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .classA {
+            color: gray;
+        }
+        
+        .classB {
+            color: greenyellow;
+            font-size: 30px;
+        }
+        
+        .classC {
+            color: pink;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="demo">
+        <h2>1. class绑定: :class='xxx'</h2>
+        <p :class="myClass">xxx is string</p>
+        <p :class="{classA: hasClassA, classB: hasClassB}">xxx is object</p>
+        <p :class="classArr">xxx is array</p>
+
+        <h2>2. style绑定</h2>
+        <p :style="{color:activeColor, fontSize}">style</p>
+
+        <button @click="update">update</button>
+
+    </div>
+
+    <script type="text/javascript" src="js/vue.js"></script>
+    <script type="text/javascript">
+        new Vue({
+            el: '#demo',
+            data: {
+                myClass: 'classA',
+                hasClassA: true,
+                hasClassB: false,
+                activeColor: 'red',
+                fontSize: '20px',
+                classArr: ['classA', 'classB']
+            },
+
+            methods: {
+                update() {
+                    this.myClass = 'classB'
+                    this.hasClassA = !this.hasClassA
+                    this.hasClassB = !this.hasClassB
+                    this.activeColor = 'skyblue'
+                    this.fontSize = '50px'
+                    this.classArr = ['classC']
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
