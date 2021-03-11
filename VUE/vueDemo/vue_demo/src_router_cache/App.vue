@@ -19,7 +19,7 @@
             <!-- 缓存路由组件 -->
             <!-- 缓存的是组件对象 -->
             <keep-alive>
-              <router-view msg='data from props'></router-view>
+              <router-view></router-view>
             </keep-alive>
           </div>
         </div>

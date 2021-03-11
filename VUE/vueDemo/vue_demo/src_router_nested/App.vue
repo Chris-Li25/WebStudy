@@ -16,11 +16,7 @@
       <div class="col-xs-6">
         <div class="panel">
           <div class="panel-body">
-            <!-- 缓存路由组件 -->
-            <!-- 缓存的是组件对象 -->
-            <keep-alive>
-              <router-view msg='data from props'></router-view>
-            </keep-alive>
+            <router-view></router-view>
           </div>
         </div>
       </div>
@@ -28,7 +24,10 @@
   </div>
 </template>
 <script>
-export default {};
+export default {
+
+}
 </script>
 <style>
+  
 </style>
