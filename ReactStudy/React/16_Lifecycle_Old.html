@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <!-- 引入react核心库 -->
+    <script type="text/javascript" src="./js/react.development.js"></script>
+    <!-- 引入react-dom，用于支持react操作DOM -->
+    <script
+      type="text/javascript"
+      src="./js/react-dom.development.js"
+    ></script>
+    <!-- 引入babel，用于将jsx转为js -->
+    <script type="text/javascript" src="./js/babel.min.js"></script>
+    <!-- 引入prop-types，用于对组件标签属性进行限制 -->
+    <script type="text/javascript" src="./js/prop-types.js"></script>
+
+    <script type="text/babel">
+      class Count extends React.Component {
+        constructor(props) {
+          console.log("Count-constructor");
+          super(props);
+        }
+
+        componentWillMount() {
+          console.log("Count-componentWillMount");
+        }
+
+        componentDidMount() {
+          console.log("Count-componentDidMount");
+        }
+
+        componentWillUnmount() {
+          console.log("Count-componentWillUnmount");
+        }
+
+        shouldComponentUpdate() {
+          console.log("Count-shouldComponentUpdate");
+          return false;
+        }
+
+        componentWillUpdate() {
+          console.log("Count-componentWillUpdate");
+        }
+
+        componentDidUpdate() {
+          console.log("Count-componentDidUpdate");
+        }
+
+        state = {
+          sum: 0,
+        };
+
+        add = () => {
+          const { sum } = this.state;
+          this.setState({
+            sum: sum + 1,
+          });
+        };
+
+        unmount = () => {
+          ReactDOM.unmountComponentAtNode(document.getElementById("root"));
+        };
+
+        fUpdate = () => {
+          this.forceUpdate();
+        };
+
+        render() {
+          console.log("Count-Render");
+          const { sum } = this.state;
+          return (
+            <div>
+              <h2>sum: {sum}</h2>
+              <button onClick={this.add}>+1</button>
+              <button onClick={this.unmount}>unmount</button>
+              <button onClick={this.fUpdate}>forceUpdate</button>
+            </div>
+          );
+        }
+      }
+
+      class A extends React.Component {
+        state = {
+          name: "Chris",
+        };
+        change = () => {
+          this.setState({
+            name: "Steve",
+          });
+        };
+        render() {
+          return (
+            <div>
+              <div>A</div>
+              <button onClick={this.change}>change</button>
+              <B name={this.state.name} />
+            </div>
+          );
+        }
+      }
+      class B extends React.Component {
+          componentWillReceiveProps(props){
+              console.log('B-componentWillReceiveProps',props);
+          }
+        render() {
+          return <div>B,name:{this.props.name}</div>;
+        }
+      }
+    //   ReactDOM.render(<Count />, document.getElementById("root"));
+      ReactDOM.render(<A />, document.getElementById("root"));
+    </script>
+  </body>
+</html>
