@@ -10,6 +10,20 @@ export default class Message extends Component {
       { id: "03", title: "消息3" },
     ],
   };
+
+  replaceShow = (id, title) => {
+    this.props.history.replace({
+      pathname: "/home/message/detail",
+      state: { id, title },
+    });
+  };
+  pushShow = (id, title) => {
+    this.props.history.push({
+      pathname: "/home/message/detail",
+      state: { id, title },
+    });
+  };
+ 
   render() {
     const { messageArr } = this.state;
     return (
@@ -19,6 +33,7 @@ export default class Message extends Component {
             return (
               <li key={msg.id}>
                 <Link
+                  replace={true}
                   to={{
                     pathname: "/home/message/detail",
                     state: { id: msg.id, title: msg.title },
@@ -26,6 +41,11 @@ export default class Message extends Component {
                 >
                   {msg.title}
                 </Link>
+                &nbsp;<button onClick={()=>this.pushShow(msg.id,msg.title)}>push查看</button>
+                &nbsp;
+                <button onClick={() => this.replaceShow(msg.id, msg.title)}>
+                  replace查看
+                </button>
               </li>
             );
           })}
