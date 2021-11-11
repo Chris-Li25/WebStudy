@@ -1,0 +1,51 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "25295221",
+      "name": "保存",
+      "font_class": "baocun",
+      "unicode": "e574",
+      "unicode_decimal": 58740
+    },
+    {
+      "icon_id": "25295222",
+      "name": "标记",
+      "font_class": "biaoji",
+      "unicode": "e575",
+      "unicode_decimal": 58741
+    },
+    {
+      "icon_id": "25295223",
+      "name": "帮助",
+      "font_class": "bangzhu",
+      "unicode": "e576",
+      "unicode_decimal": 58742
+    },
+    {
+      "icon_id": "25295224",
+      "name": "编辑",
+      "font_class": "bianji",
+      "unicode": "e577",
+      "unicode_decimal": 58743
+    },
+    {
+      "icon_id": "25295225",
+      "name": "报表",
+      "font_class": "baobiao",
+      "unicode": "e578",
+      "unicode_decimal": 58744
+    },
+    {
+      "icon_id": "25295226",
+      "name": "查看",
+      "font_class": "chakan",
+      "unicode": "e579",
+      "unicode_decimal": 58745
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+{"version":3,"file":"js/main.js","mappings":";;;;;;AAAA;AACA;AACA;AACA;AACA;AACA","sources":["webpack://02_webpack_config_start/./src/index.ts"],"sourcesContent":["\"use strict\";\r\nvar title = \"front end development\";\r\nvar foo = function (msg) {\r\n    console.log(msg);\r\n};\r\nfoo(title);\r\n"],"names":[],"sourceRoot":""}

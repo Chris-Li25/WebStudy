@@ -1,0 +1,17 @@
+.title {
+  display: grid;
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background: -webkit-gradient(linear, left top, left bottom, from(white), to(black));
+  background: -webkit-linear-gradient(top, white, black);
+  background: -moz-linear-gradient(top, white, black);
+  background: linear-gradient(to bottom, white, black);
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9jc3MvdGVzdC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxhQUFhO0VBQ2IsNEJBQW9CO0VBQXBCLHVCQUFvQjtFQUFwQix5QkFBb0I7RUFBcEIsb0JBQW9CO0VBQ3BCLHlCQUFpQjtLQUFqQixzQkFBaUI7TUFBakIscUJBQWlCO1VBQWpCLGlCQUFpQjtFQUNqQixtRkFBb0Q7RUFBcEQsc0RBQW9EO0VBQXBELG1EQUFvRDtFQUFwRCxvREFBb0Q7QUFDdEQiLCJmaWxlIjoicmV0LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi50aXRsZSB7XHJcbiAgZGlzcGxheTogZ3JpZDtcclxuICB0cmFuc2l0aW9uOiBhbGwgMC41cztcclxuICB1c2VyLXNlbGVjdDogbm9uZTtcclxuICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gYm90dG9tLCB3aGl0ZSwgYmxhY2spO1xyXG59XHJcbiJdfQ== */
