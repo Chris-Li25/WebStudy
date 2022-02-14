@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>后台主页</title>
+    <script src="./jquery.js"></script>
+  </head>
+
+  <body>
+    <h1>首页</h1>
+
+    <button id="getInfo">获取用户信息</button>
+
+    <script>
+      $(function () {
+        $.ajaxPrefilter(function (options) {
+          options.headers = {
+            Authorization: `Bearer ${localStorage.getItem("token") || ""}`,
+          };
+        });
+
+        $("#getInfo").on("click", function () {
+          // 发起 POST 请求，退出登录
+          $.get("http://127.0.0.1/admin/getInfo", function (res) {
+            console.log(res);
+            if (res.status) {
+              alert(JSON.stringify(res.data));
+            } else {
+              alert(`没有权限，请登录后重试`);
+              location.href = "./login.html";
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
